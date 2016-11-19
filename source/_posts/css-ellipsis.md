@@ -4,14 +4,15 @@ categories: CSS
 tags: CSS
 keywords:
   - css
-thumbnailImage: css3logo-image.png
-thumbnailImagePosition: left
+date: 2016-11-15 18:49:54
 ---
 
 ### CSS 말 줄임표를 사용하려면 ?
 
 CSS를 사용시 단락에 '말 줄임표'를 사용할 경우가 있는데,
 이때 'text-overflow: ellipsis' 속성을 사용하여 적용 할 수 있습니다.
+
+<!-- more -->
 
 사용하려면 다른 속성들이 같이 사용되어야 하는데 거의 공식과 같으니 알아두면 좋습니다.
 
