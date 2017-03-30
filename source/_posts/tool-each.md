@@ -1,3 +1,16 @@
+---
+title: Grunt, Gulp, Webpack
+categories: Tool
+tags: Tool
+keywords:
+  - Tool
+  - Gulp
+  - Grunt
+  - Browserify
+  - Webpack
+date: 2017-03-29 08:20:33
+---
+
 ### 2017년에 Grunt와 Gulp를 언급하는 이유
 
 현재 대세는 단연코 Webpack이라고 할 수 있습니다.
@@ -103,10 +116,11 @@ module.exports = function bar () {
 
 참고한 블로그를 보면 webpack을 사용해 watch한 경우 빌드시간이 20초 0.1 ~ 0.3으로 단축되었다는 글을 볼 수 있었습니다.
 
-Webpack을 정확히 이해하고 적용하는데는 시간이 걸리겠지만, 좋은 부분이 있다는 건 확실히 이해해야 할것 같습니다.
+실제로 정확히 이해하고 적용하는데는 시간이 걸리겠지만, 좋은 부분이 있다는 건 확실히 이해해야 할것 같습니다.
 
 
 > 출처 :
 * [Webpack – 모듈화와 속도를 모두 잡는 방법.](https://ironhee.com/2015/06/06/webpack-%EB%AA%A8%EB%93%88%ED%99%94%EC%99%80-%EC%86%8D%EB%8F%84%EB%A5%BC-%EB%AA%A8%EB%91%90-%EC%9E%A1%EB%8A%94-%EB%B0%A9%EB%B2%95/)
 * [Webpack or Browserify & Gulp: Which Is Better?](https://www.toptal.com/front-end/webpack-browserify-gulp-which-is-better)
 * etc...
+
