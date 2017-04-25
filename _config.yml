@@ -72,3 +72,8 @@ deploy:
 	repo: https://github.com/Jae-kwang/Jae-kwang.github.io.git
 	branch: master
 
+# rss feed auto generator
+feed:
+    type: atom
+    path: atom.xml
+    limit: 20

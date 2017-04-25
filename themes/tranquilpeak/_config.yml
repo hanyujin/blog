@@ -124,6 +124,11 @@ author:
     # Your google plus profile id. E.g : `+Tranquilpeak` or `123812884128439`
     google_plus: fullest.sway@gmail.com
 
+# rss feed auto generator
+feed:
+    type: atom
+    path: atom.xml
+    limit: 20
 
 # Customization
 # Define the behavior of the sidebar
@@ -182,7 +187,4 @@ fb_admin_ids:
 # Your Facebook app id used to connect your blog with your facebook app account (Facebook Insights). E.g : 9841307
 fb_app_id:
 
-feed:
-    type: atom
-    path: atom.xml
-    limit: 20
+
