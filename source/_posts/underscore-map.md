@@ -1,14 +1,16 @@
 ---
 title: Underscore의 _.map 
-categories: javascript
-tags: javascript
+categories: Javascript
+tags: Javascript
 keywords:
-  - javascript,
+  - Javascript,
   - library
 date: 2017-04-29 11:15:00
 ---
 
-Underscore 의 _.map를 처음부터 따라가면서 살펴보도록 하겠습니다.
+###Underscore 의 _.map
+
+v1부터 현재까지 코드가 어떻게 변해왔는지 확인해봅니다.
 
 <!-- more -->
 
@@ -75,6 +77,7 @@ _.map = function(obj, iterator, context) {
 };
 ```
 1. push 대신에 key에 접근해 직접 값을 할당하는 하는 방식으로 변경됨
+
 -------------------------------------------------
 
 [~v1.1.4]
@@ -90,6 +93,7 @@ _.map = function(obj, iterator, context) {
 };
 ```
 1. null 값 체크 추가
+
 -------------------------------------------------
 [~v1.2.4]
 ``` javascript
@@ -121,6 +125,7 @@ _.map = _.collect = function(obj, iterator, context) {
 };
 ```
 1. _.collect 라는 다른 네이밍이 추가되었습니다.
+
 -------------------------------------------------
 [~v1.8.0]
 ```javascript

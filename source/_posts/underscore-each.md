@@ -1,14 +1,16 @@
 ---
 title: Underscore의 _.each 
-categories: javascript
-tags: javascript
+categories: Javascript
+tags: Javascript
 keywords:
-  - javascript,
+  - Javascript,
   - library
 date: 2017-04-24 09:18:00
 ---
 
-Underscore 의 _.each를 처음부터 따라가면서 살펴보도록 하겠습니다
+### Underscore 의 _.each
+
+v1부터 현재까지 코드가 어떻게 변해왔는지 확인해봅니다.
 
 <!-- more -->
 
