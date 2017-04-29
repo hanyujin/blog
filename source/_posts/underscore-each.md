@@ -1,14 +1,14 @@
 ---
 title: Underscore의 _.each 
 categories: javascript
-tags: javascript, library
+tags: javascript
 keywords:
   - javascript,
   - library
 date: 2017-04-24 09:18:00
 ---
 
-Underscore 의 _.each가 어떻게 만들어졌는지 알아봅니다.
+Underscore 의 _.each를 처음부터 따라가면서 살펴보도록 하겠습니다
 
 <!-- more -->
 
@@ -152,7 +152,7 @@ var each = _.forEach = function(obj, iterator, context) {
 };
 ```
 1. each가 foreach라는 이름도 갖게 되었습니다.
-2. 기본 배열이닞 확인하는 비교문이 수정되었습니다.(nativeForEach = ArrayProto.forEach)
+2. 기본 배열인지 확인하는 비교문이 수정되었습니다.(nativeForEach = ArrayProto.forEach)
 3. 들어오는 obj가 객체인 경우 loop 가 다시 for에서 for in으로 변경되었습니다.
    내부 loop에서 hasOwnProperty를 사용해서 property확인을 합니다.
 
