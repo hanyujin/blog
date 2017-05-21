@@ -1,9 +1,11 @@
 ---
 title: Underscore의 _.each 
 categories: Javascript
-tags: Javascript
+tags:
+  - Javascript
+  - underscore.js
 keywords:
-  - Javascript,
+  - Javascript
   - library
 date: 2017-04-24 09:18:00
 ---

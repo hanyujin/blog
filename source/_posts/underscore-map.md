@@ -1,9 +1,11 @@
 ---
 title: Underscore의 _.map 
 categories: Javascript
-tags: Javascript
+tags:
+  - Javascript
+  - underscore.js
 keywords:
-  - Javascript,
+  - Javascript
   - library
 date: 2017-04-29 11:15:00
 ---
