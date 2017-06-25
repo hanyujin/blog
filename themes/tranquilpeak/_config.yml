@@ -70,10 +70,10 @@ sidebar:
         #     title: global.twitter
         #     url: https://twitter.com/
         #     icon: twitter
-        # facebook:
-        #     title: global.facebook
-        #     url: https://facebook.com/
-        #     icon: facebook
+         facebook:
+             title: global.facebook
+             url: https://www.facebook.com/fullest.sway
+             icon: facebook
         # google_plus:
         #     title: global.google_plus
         #     url: https://plus.google.com/
@@ -183,8 +183,8 @@ gravatar_email:
 # Your swiftype install key
 swiftype_install_key:
 # Your Facebook user ids used to connect your blog with your facebook user accounts (Facebook Insights). Separate ids with comma. e.g : 9830047,1003342
-fb_admin_ids:
+fb_admin_ids: fullest.sway
 # Your Facebook app id used to connect your blog with your facebook app account (Facebook Insights). E.g : 9841307
-fb_app_id:
+fb_app_id: fullest.sway
 
 

@@ -21,41 +21,44 @@ global:
     share_on_google_plus: "Share on Google Plus"
     share_on_facebook: "Share on Facebook"
     share_on_twitter: "Share on Twitter"
-    search_category: "Search category"
-    search_tag: "Search tag"
-    search_date: "Search date (YYYY/MM/DD)"
+    search_category: "카테고리로 찾기"
+    search_tag: "태그로 찾기"
+    search_date: "날짜로 찾기 (YYYY/MM/DD)"
     posts_found:
         zero: "no post found"
         one: "1 post found"
         other: "{n} posts found"
     categories_found:
-        zero: "no category found"
-        one: "1 cartegory found"
-        other: "{n} categories found"
+        zero: "카테고리를 찾을 수 없습니다."
+        one: "한개의 카테고리를 찾았습니다."
+        other: "{n} 개의 카테고리를 찾았습니다."
     tags_found:
-        zero: "no tag found"
-        one: "1 tag found"
-        other: "{n} tags found"
+        zero: "태그를 찾을 수 없습니다."
+        one: "한개의 태그를 찾았습니다."
+        other: "{n} 개의 태그를 찾았습니다."
 
 pagination:
     page: "page %d"
     of: "of %d"
-    newer_posts: "NEWER POSTS"
-    older_posts: "OLDER POSTS"
-    previous: "PREVIOUS"
-    next: "NEXT"
+    newer_posts: "새로운 포스트"
+    older_posts: "이전 포스트"
+    previous: "이전"
+    next: "다음"
 
 post:
     no_title : "no title"
     categorized_in: "in"
-    tagged_in: "TAGGED IN"
+    tagged_in: "태그들"
     toc: "Table of Contents"
-    read_more: "Continue reading"
+    read_more: "더 읽어보기"
     go_to_website: "Go to website"
     comment_and_share: "Comment and share"
 
 author:
     # Your biography (Markdown and HTML supported)
-    bio: "JaeKwang Jung"
+    bio: "
+      <h2>정재광</h2>
+      <p style='padding: 0 30px; line-height: 30px;'>'<b>넓게보단 깊게, 조급한 마음을 갖지말고, 할 수 있는 만큼에서 최선을 다하자'</b> 라는 생각으로 현재를 살아가고 있는 프론트 엔드 개발자 입니다.</p>
+    "
     # Your job
-    job: "Web Developer"
+    job: "프론트 엔드 개발자(Front-end Developer)"
