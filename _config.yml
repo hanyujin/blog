@@ -69,8 +69,8 @@ theme: tranquilpeak
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-	repo: https://github.com/Jae-kwang/Jae-kwang.github.io.git
-	branch: master
+	repo: https://github.com/Jae-kwang/blog
+	branch: gh-pages
 
 # rss feed auto generator
 feed:
