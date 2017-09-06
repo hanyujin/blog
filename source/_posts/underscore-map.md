@@ -7,6 +7,7 @@ tags:
 keywords:
   - Javascript
   - library
+thumbnailImage: https://raw.githubusercontent.com/Jae-kwang/blog/master/source/img/underscore.png
 date: 2017-04-29 11:15:00
 ---
 
