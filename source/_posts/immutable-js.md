@@ -1,6 +1,6 @@
 ---
 title: immutable.js 알아보기
-categories: Javascript
+categories: javascript
 tags:
   - Javascript
   - immutable.js
