@@ -5,7 +5,7 @@ tags:
   - React
 keywords:
   - React
-thumbnailImage: react.png  
+thumbnailImage: https://raw.githubusercontent.com/Jae-kwang/blog/master/source/img/react.png
 date: 2017-06-06 13:30:00
 ---
 

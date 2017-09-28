@@ -1,6 +1,8 @@
 ---
 title: Underscore의 _.each 
-categories: Javascript
+categories: 
+  - javascript
+  - library
 tags:
   - Javascript
   - underscore.js
