@@ -7,7 +7,7 @@ tags:
 keywords:
   - React
 thumbnailImage: https://raw.githubusercontent.com/Jae-kwang/blog/master/source/img/react.png
-date: 2017-08-11 09:18:00
+date: 2017-09-28 09:18:00
 ---
 
 Under-the-hood-ReactJS를 읽어보면서 이해한 부분을 정리해보았습니다. 
