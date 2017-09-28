@@ -6,6 +6,7 @@ tags:
   - javascript
 keywords:
   - React
+thumbnailImage: https://raw.githubusercontent.com/Jae-kwang/blog/master/source/img/react.png
 date: 2017-08-11 09:18:00
 ---
 
