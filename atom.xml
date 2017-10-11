@@ -85,9 +85,160 @@
       <category term="bootstrap" scheme="https://jae-kwang.github.io/blog/categories/js/lib/bootstrap/"/>
     
     
+      <category term="javascript" scheme="https://jae-kwang.github.io/blog/tags/javascript/"/>
+    
       <category term="bootstrap.js" scheme="https://jae-kwang.github.io/blog/tags/bootstrap-js/"/>
     
+  </entry>
+  
+  <entry>
+    <title>Under-the-hood-ReactJS(2) - 업데이트</title>
+    <link href="https://jae-kwang.github.io/blog/2017/09/28/Under-the-hood-ReactJS-2/"/>
+    <id>https://jae-kwang.github.io/blog/2017/09/28/Under-the-hood-ReactJS-2/</id>
+    <published>2017-09-28T00:18:00.000Z</published>
+    <updated>2017-10-11T00:30:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Under-the-hood-ReactJS의 파트 8~10인 업데이트 관련 부분입니다.</p>
+<a id="more"></a>
+<h3 id="파트-8"><a href="#파트-8" class="headerlink" title="파트 8"></a>파트 8</h3><h4 id="this-setState"><a href="#this-setState" class="headerlink" title="this.setState"></a>this.setState</h4><div class="alert info"><p>인트로에서도 언급되었듯 업데이트의 시작은 <strong>this.setState</strong>에서 부터 다뤄집니다.</p>
+</div>
+<ul>
+<li>setState는 <code>ReactComponent</code>에서 컴포넌트를 상속받았고, <code>updater</code> 속성을 받습니다. (파트3)</li>
+<li>각 컴포넌트는 자신의 pandding state의 목록을 가지고 있고, 하나의 트랜잭션에서 setState를 호출 할 때마다 그 객체를 대기열에 넣은 다음 나중에 하나씩 컴포넌트 state로 머지합니다.</li>
+<li>setState를 호출하여, 컴포넌트를 dirtyComponents 리스트에 추가 할 수 있습니다.<ul>
+<li>dirtyComponents는 변경된 항목들을 비교하기위해 넣어두는 리스트 입니다. (파트 10)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="파트-9"><a href="#파트-9" class="headerlink" title="파트 9"></a>파트 9</h3><h4 id="setState-메소드가-호출되는-두가지-경우"><a href="#setState-메소드가-호출되는-두가지-경우" class="headerlink" title="setState 메소드가 호출되는 두가지 경우"></a>setState 메소드가 호출되는 두가지 경우</h4><ul>
+<li>마우스 이벤트에 의한 호출<ul>
+<li>마우스 이벤트가 발생하면 앞서 살펴본 것처럼 여러 레이어를 통해 일괄(batched)업데이트 되는데, ReactReconcileTransaction 래퍼가 비활성화되고 이후 ReactEventListener enabled때 다시 발생될때 안전하게 마운팅됩니다. (파트 2)</li>
+</ul>
+</li>
+<li>setTimeout에 의한 호출<ul>
+<li>setTimeout의 경우에도 위의 경우와 다르지 않게 트랜잭션이 아직 오픈되지 않았을 경우 일괄(batching) 트렌젝션 열고 dirtyComponents리스트에 영향받은 컴포넌트 추가하고 트렌젝션을 close(ReactUpdates.flushBatchedUpdates)하고 dirtyComponents를 처리합니다.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="파트-10"><a href="#파트-10" class="headerlink" title="파트 10"></a>파트 10</h3><h4 id="Dirty-components"><a href="#Dirty-components" class="headerlink" title="Dirty components"></a>Dirty components</h4><ul>
+<li>dirtyComponents리스트를 처리하기 위해 루프를 수행합니다.</li>
+<li>이때 ReactUpdates.runBatchedUpdates 호출합니다.<ul>
+<li>새로운 또 하나의 트렌젝션 <strong>ReactUpdatesFlushTransaction 래퍼</strong> 사용</li>
+<li>dirtyComponentsLength가 변경된 경우 flushBatchedUpdates를 통해 한번 더 수행</li>
+</ul>
+</li>
+<li>ReactUpdatesFlushTransaction 래퍼(dirtyComponents 배열을 지우고, 마운트 준비 핸들러(예: componentDidUpdate)가 대기열에 추가 한 모든 업데이트를 수행)<ul>
+<li>dirtyComponets배열 정렬(mount order)</li>
+<li>dirtyComponentsLength을 기준으로 반복해서 수행.</li>
+<li>각 컴포넌트를 ReactReconciler.performUpdateIfNecessary로 전달.<ul>
+<li>실제로 performUpdateIfNecessary메소드는 ReactCompositeComponent.updateComponent에서 호출합니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="파트-11"><a href="#파트-11" class="headerlink" title="파트 11"></a>파트 11</h3><h4 id="Update-component"><a href="#Update-component" class="headerlink" title="Update component"></a>Update component</h4><ul>
+<li>setState가 호출되거나 props가 변경된 경우 updateComponent 메소드가 호출될 수 있습니다.</li>
+<li>pending state queue기반으로 nextState를 비교합니다. (예제 에서의 {message : “click state message”})</li>
+<li>shouldUpdate를 디폴트값 true로 설정<ul>
+<li>실제로 <code>shouldComponentUpdate</code>가 지정되지 않은 경우에도 컴포넌트가 기본적으로 업데이트되는 이유</li>
+</ul>
+</li>
+<li>강제 업데이트인지 확인<ul>
+<li>강제 업데이트가 아닌경우 <code>shouldComponentUpdate</code> 메소드가 호출되어 <code>shouldUpdate</code>의 결과 값으로 재할당됩니다.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="파트-12"><a href="#파트-12" class="headerlink" title="파트 12"></a>파트 12</h3><h4 id="실제로-컴포넌트를-업데이트하는-경우"><a href="#실제로-컴포넌트를-업데이트하는-경우" class="headerlink" title="실제로 컴포넌트를 업데이트하는 경우"></a>실제로 컴포넌트를 업데이트하는 경우</h4><ul>
+<li><p><code>componentWillUpdate</code>가 명시되어 있다면 그것을 호출합니다.</p>
+</li>
+<li><p>컴포넌트를 리랜더링합니다.</p>
+<ul>
+<li>컴포넌트의 render 메소드를 호출하고, 그에 따라 DOM을 업데이트 합니다.</li>
+<li>이전에 렌더링된 엘리먼트와 비교하여 DOM을 실제로 업데이트해 하는지 확인합니다.(update or replace completely)<ul>
+<li>shouldUpdateReactComponent(중복된 DOM 업데이트를 피하고 리엑트 성능을 향상)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>componentDidUpdate</code> 호출을 대기열에 추가합니다.</p>
+</li>
+</ul>
+<hr>
+<h3 id="파트-13"><a href="#파트-13" class="headerlink" title="파트 13"></a>파트 13</h3><h4 id="Receive-component"><a href="#Receive-component" class="headerlink" title="Receive component"></a>Receive component</h4><ul>
+<li><p>shouldUpdateReactComponent -&gt; ReactReconciler.receiveComponent -&gt; ReactDOMComponent.receiveComponent</p>
+<ul>
+<li>위와 같은 형태로 다음 엘리먼트 전달합니다.</li>
+</ul>
+</li>
+<li><p>DOM 컴포넌트 인스턴스에 전달받은 엘리먼트를 할당하고 update 메소드를 호출합니다.</p>
+</li>
+<li><p>updateComponent 메소드는 실제로 prev와 next props를 기반으로 2가지 동작을 수행합니다.</p>
+<ul>
+<li>DOM properties 업데이트 : _updateDOMProperties(파트 5)</li>
+<li>DOM children 업데이트 : _updateDOMChildren(파트 14)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="파트-14"><a href="#파트-14" class="headerlink" title="파트 14"></a>파트 14</h3><h4 id="updateDOMChildren"><a href="#updateDOMChildren" class="headerlink" title="_updateDOMChildren"></a>_updateDOMChildren</h4><ul>
+<li><p>‘ExampleApplication’는 button, ChildCmp, text string를 자식으로 가지고 있습니다.</p>
+</li>
+<li><p>해당 컴포넌트의 자식이 ‘content’형태인지 ‘complex’형태 인지 판단합니다.</p>
+<ul>
+<li>complex : 리엑트 컴포넌트</li>
+<li>content : 문자열이나 숫자와 같은 단순타입</li>
+</ul>
+</li>
+<li><p>complex인 경우</p>
+<ul>
+<li>부모 컴포넌트는 이전에 수행했던 시나리오와 동일한 시나리오를 통해 자식들을 전달합니다.</li>
+<li>‘content’ 레벨에 도달할때까지 여러번 작업을 반복합니다.</li>
+</ul>
+</li>
+<li><p>content인 경우</p>
+<ul>
+<li>이전과 현재 텍스트가 같은지 비교하고 수정되었다면 업데이트 합니다.(replace)</li>
+<li>텍스트 업데이트인 경우 setTextContent를 호출해 HTML노드의 내용을 수정합니다.</li>
+<li>콘텐츠가 업데이트되고 페이지에서 사용자를 위해 리렌더링됩니다.</li>
+</ul>
+</li>
+<li><p>이전에 대기열에 넣어두었던 <code>componentDidUpdate</code>를 호출합니다. (파트 12)</p>
+<ul>
+<li><code>componentDidUpdate</code>를 호출할 수 있는 이유<ul>
+<li>dirty 컴포넌트 업데이트는 ReactUpdatesFlushTransaction로 래핑되었고, 래퍼 중 하나는 실제로 this.callbackQueue.notifyAll() 로직을 포함하므로 <code>componentDidUpdate</code>를 호출되는 것입니다. (파트 10)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>저는 이 글들을 번역하고 공부하면서도 실제로 100% 이해했다고는 말할 수 없었습니다. 다만 제가 리엑트 이해도를 100%로 정했을때 스스로의 이해도가 10%정도의 수준이라면 15%정도 되지 않았을까라는 생각정도만 가지고 있습니다.</p>
+<p>그 이유로는, 저는 무언가를 읽고 학습할때 글보다는 코드로 이해하는게 훨씬 이해도가 높습니다. 그래서 제가 처음보는 말들보다는 익숙한 예약어들이 많이 등장할때 훨씬 이해가 잘되는 느낌이었습니다.</p>
+<p>그 예약어로는 라이프사이클 메소드를 들 수가 있었고, 제가 가지고 있는 라이프사이클 순서 사이사이에 위에서 알아본 일련의 과정들을 집어넣어보면서 이해했던것 같습니다.</p>
+<p>제법 오랜시간동안 이거 한다고 다른걸 안하고 있었으니, 이제는 실제로 써먹을 수 있을지 간단히 리엑트 프로젝트를 한번 해봐야겠습니다!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Under-the-hood-ReactJS의 파트 8~10인 업데이트 관련 부분입니다.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="js" scheme="https://jae-kwang.github.io/blog/categories/js/"/>
+    
+      <category term="lib" scheme="https://jae-kwang.github.io/blog/categories/js/lib/"/>
+    
+      <category term="react" scheme="https://jae-kwang.github.io/blog/categories/js/lib/react/"/>
+    
+    
       <category term="javascript" scheme="https://jae-kwang.github.io/blog/tags/javascript/"/>
+    
+      <category term="react" scheme="https://jae-kwang.github.io/blog/tags/react/"/>
     
   </entry>
   
@@ -267,157 +418,6 @@
     <summary type="html">
     
       &lt;p&gt;Under-the-hood-ReactJS를 읽어보면서 이해한 부분을 정리해보았습니다.&lt;br&gt;Intro ~ 파트7까지의 마운트 부분에 대한 설명이 있습니다.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="js" scheme="https://jae-kwang.github.io/blog/categories/js/"/>
-    
-      <category term="lib" scheme="https://jae-kwang.github.io/blog/categories/js/lib/"/>
-    
-      <category term="react" scheme="https://jae-kwang.github.io/blog/categories/js/lib/react/"/>
-    
-    
-      <category term="javascript" scheme="https://jae-kwang.github.io/blog/tags/javascript/"/>
-    
-      <category term="react" scheme="https://jae-kwang.github.io/blog/tags/react/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Under-the-hood-ReactJS(2) - 업데이트</title>
-    <link href="https://jae-kwang.github.io/blog/2017/09/28/Under-the-hood-ReactJS-2/"/>
-    <id>https://jae-kwang.github.io/blog/2017/09/28/Under-the-hood-ReactJS-2/</id>
-    <published>2017-09-28T00:18:00.000Z</published>
-    <updated>2017-10-11T00:30:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Under-the-hood-ReactJS의 파트 8~10인 업데이트 관련 부분입니다.</p>
-<a id="more"></a>
-<h3 id="파트-8"><a href="#파트-8" class="headerlink" title="파트 8"></a>파트 8</h3><h4 id="this-setState"><a href="#this-setState" class="headerlink" title="this.setState"></a>this.setState</h4><div class="alert info"><p>인트로에서도 언급되었듯 업데이트의 시작은 <strong>this.setState</strong>에서 부터 다뤄집니다.</p>
-</div>
-<ul>
-<li>setState는 <code>ReactComponent</code>에서 컴포넌트를 상속받았고, <code>updater</code> 속성을 받습니다. (파트3)</li>
-<li>각 컴포넌트는 자신의 pandding state의 목록을 가지고 있고, 하나의 트랜잭션에서 setState를 호출 할 때마다 그 객체를 대기열에 넣은 다음 나중에 하나씩 컴포넌트 state로 머지합니다.</li>
-<li>setState를 호출하여, 컴포넌트를 dirtyComponents 리스트에 추가 할 수 있습니다.<ul>
-<li>dirtyComponents는 변경된 항목들을 비교하기위해 넣어두는 리스트 입니다. (파트 10)</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="파트-9"><a href="#파트-9" class="headerlink" title="파트 9"></a>파트 9</h3><h4 id="setState-메소드가-호출되는-두가지-경우"><a href="#setState-메소드가-호출되는-두가지-경우" class="headerlink" title="setState 메소드가 호출되는 두가지 경우"></a>setState 메소드가 호출되는 두가지 경우</h4><ul>
-<li>마우스 이벤트에 의한 호출<ul>
-<li>마우스 이벤트가 발생하면 앞서 살펴본 것처럼 여러 레이어를 통해 일괄(batched)업데이트 되는데, ReactReconcileTransaction 래퍼가 비활성화되고 이후 ReactEventListener enabled때 다시 발생될때 안전하게 마운팅됩니다. (파트 2)</li>
-</ul>
-</li>
-<li>setTimeout에 의한 호출<ul>
-<li>setTimeout의 경우에도 위의 경우와 다르지 않게 트랜잭션이 아직 오픈되지 않았을 경우 일괄(batching) 트렌젝션 열고 dirtyComponents리스트에 영향받은 컴포넌트 추가하고 트렌젝션을 close(ReactUpdates.flushBatchedUpdates)하고 dirtyComponents를 처리합니다.</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="파트-10"><a href="#파트-10" class="headerlink" title="파트 10"></a>파트 10</h3><h4 id="Dirty-components"><a href="#Dirty-components" class="headerlink" title="Dirty components"></a>Dirty components</h4><ul>
-<li>dirtyComponents리스트를 처리하기 위해 루프를 수행합니다.</li>
-<li>이때 ReactUpdates.runBatchedUpdates 호출합니다.<ul>
-<li>새로운 또 하나의 트렌젝션 <strong>ReactUpdatesFlushTransaction 래퍼</strong> 사용</li>
-<li>dirtyComponentsLength가 변경된 경우 flushBatchedUpdates를 통해 한번 더 수행</li>
-</ul>
-</li>
-<li>ReactUpdatesFlushTransaction 래퍼(dirtyComponents 배열을 지우고, 마운트 준비 핸들러(예: componentDidUpdate)가 대기열에 추가 한 모든 업데이트를 수행)<ul>
-<li>dirtyComponets배열 정렬(mount order)</li>
-<li>dirtyComponentsLength을 기준으로 반복해서 수행.</li>
-<li>각 컴포넌트를 ReactReconciler.performUpdateIfNecessary로 전달.<ul>
-<li>실제로 performUpdateIfNecessary메소드는 ReactCompositeComponent.updateComponent에서 호출합니다.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="파트-11"><a href="#파트-11" class="headerlink" title="파트 11"></a>파트 11</h3><h4 id="Update-component"><a href="#Update-component" class="headerlink" title="Update component"></a>Update component</h4><ul>
-<li>setState가 호출되거나 props가 변경된 경우 updateComponent 메소드가 호출될 수 있습니다.</li>
-<li>pending state queue기반으로 nextState를 비교합니다. (예제 에서의 {message : “click state message”})</li>
-<li>shouldUpdate를 디폴트값 true로 설정<ul>
-<li>실제로 <code>shouldComponentUpdate</code>가 지정되지 않은 경우에도 컴포넌트가 기본적으로 업데이트되는 이유</li>
-</ul>
-</li>
-<li>강제 업데이트인지 확인<ul>
-<li>강제 업데이트가 아닌경우 <code>shouldComponentUpdate</code> 메소드가 호출되어 <code>shouldUpdate</code>의 결과 값으로 재할당됩니다.</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="파트-12"><a href="#파트-12" class="headerlink" title="파트 12"></a>파트 12</h3><h4 id="실제로-컴포넌트를-업데이트하는-경우"><a href="#실제로-컴포넌트를-업데이트하는-경우" class="headerlink" title="실제로 컴포넌트를 업데이트하는 경우"></a>실제로 컴포넌트를 업데이트하는 경우</h4><ul>
-<li><p><code>componentWillUpdate</code>가 명시되어 있다면 그것을 호출합니다.</p>
-</li>
-<li><p>컴포넌트를 리랜더링합니다.</p>
-<ul>
-<li>컴포넌트의 render 메소드를 호출하고, 그에 따라 DOM을 업데이트 합니다.</li>
-<li>이전에 렌더링된 엘리먼트와 비교하여 DOM을 실제로 업데이트해 하는지 확인합니다.(update or replace completely)<ul>
-<li>shouldUpdateReactComponent(중복된 DOM 업데이트를 피하고 리엑트 성능을 향상)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><code>componentDidUpdate</code> 호출을 대기열에 추가합니다.</p>
-</li>
-</ul>
-<hr>
-<h3 id="파트-13"><a href="#파트-13" class="headerlink" title="파트 13"></a>파트 13</h3><h4 id="Receive-component"><a href="#Receive-component" class="headerlink" title="Receive component"></a>Receive component</h4><ul>
-<li><p>shouldUpdateReactComponent -&gt; ReactReconciler.receiveComponent -&gt; ReactDOMComponent.receiveComponent</p>
-<ul>
-<li>위와 같은 형태로 다음 엘리먼트 전달합니다.</li>
-</ul>
-</li>
-<li><p>DOM 컴포넌트 인스턴스에 전달받은 엘리먼트를 할당하고 update 메소드를 호출합니다.</p>
-</li>
-<li><p>updateComponent 메소드는 실제로 prev와 next props를 기반으로 2가지 동작을 수행합니다.</p>
-<ul>
-<li>DOM properties 업데이트 : _updateDOMProperties(파트 5)</li>
-<li>DOM children 업데이트 : _updateDOMChildren(파트 14)</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="파트-14"><a href="#파트-14" class="headerlink" title="파트 14"></a>파트 14</h3><h4 id="updateDOMChildren"><a href="#updateDOMChildren" class="headerlink" title="_updateDOMChildren"></a>_updateDOMChildren</h4><ul>
-<li><p>‘ExampleApplication’는 button, ChildCmp, text string를 자식으로 가지고 있습니다.</p>
-</li>
-<li><p>해당 컴포넌트의 자식이 ‘content’형태인지 ‘complex’형태 인지 판단합니다.</p>
-<ul>
-<li>complex : 리엑트 컴포넌트</li>
-<li>content : 문자열이나 숫자와 같은 단순타입</li>
-</ul>
-</li>
-<li><p>complex인 경우</p>
-<ul>
-<li>부모 컴포넌트는 이전에 수행했던 시나리오와 동일한 시나리오를 통해 자식들을 전달합니다.</li>
-<li>‘content’ 레벨에 도달할때까지 여러번 작업을 반복합니다.</li>
-</ul>
-</li>
-<li><p>content인 경우</p>
-<ul>
-<li>이전과 현재 텍스트가 같은지 비교하고 수정되었다면 업데이트 합니다.(replace)</li>
-<li>텍스트 업데이트인 경우 setTextContent를 호출해 HTML노드의 내용을 수정합니다.</li>
-<li>콘텐츠가 업데이트되고 페이지에서 사용자를 위해 리렌더링됩니다.</li>
-</ul>
-</li>
-<li><p>이전에 대기열에 넣어두었던 <code>componentDidUpdate</code>를 호출합니다. (파트 12)</p>
-<ul>
-<li><code>componentDidUpdate</code>를 호출할 수 있는 이유<ul>
-<li>dirty 컴포넌트 업데이트는 ReactUpdatesFlushTransaction로 래핑되었고, 래퍼 중 하나는 실제로 this.callbackQueue.notifyAll() 로직을 포함하므로 <code>componentDidUpdate</code>를 호출되는 것입니다. (파트 10)</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p>저는 이 글들을 번역하고 공부하면서도 실제로 100% 이해했다고는 말할 수 없었습니다. 다만 제가 리엑트 이해도를 100%로 정했을때 스스로의 이해도가 10%정도의 수준이라면 15%정도 되지 않았을까라는 생각정도만 가지고 있습니다.</p>
-<p>그 이유로는, 저는 무언가를 읽고 학습할때 글보다는 코드로 이해하는게 훨씬 이해도가 높습니다. 그래서 제가 처음보는 말들보다는 익숙한 예약어들이 많이 등장할때 훨씬 이해가 잘되는 느낌이었습니다.</p>
-<p>그 예약어로는 라이프사이클 메소드를 들 수가 있었고, 제가 가지고 있는 라이프사이클 순서 사이사이에 위에서 알아본 일련의 과정들을 집어넣어보면서 이해했던것 같습니다.</p>
-<p>제법 오랜시간동안 이거 한다고 다른걸 안하고 있었으니, 이제는 실제로 써먹을 수 있을지 간단히 리엑트 프로젝트를 한번 해봐야겠습니다!</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Under-the-hood-ReactJS의 파트 8~10인 업데이트 관련 부분입니다.&lt;/p&gt;
     
     </summary>
     
