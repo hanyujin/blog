@@ -1,11 +1,14 @@
 ---
 title: Bootstrap의 tap plugins 분석
-categories: Javascript
+categories:
+  - js
+  - lib
+  - bootstrap
 tags:
-  - Javascript
+  - javascript
   - bootstrap.js
 keywords:
-  - Javascript
+  - javascript
   - library
 thumbnailImage: https://raw.githubusercontent.com/Jae-kwang/blog/master/source/img/bootstrap.png
 date: 2017-10-11 09:10:00

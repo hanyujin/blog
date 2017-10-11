@@ -1,7 +1,7 @@
 ---
 title: 여러줄에서 말줄임표 사용하기
-categories: CSS
-tags: CSS
+categories: css
+tags: css
 keywords:
   - css
 date: 2017-01-30 14:32:00

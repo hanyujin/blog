@@ -1,10 +1,13 @@
 ---
 title: filter, map 그리고 reduce 
-categories: Javascript
-tags: Javascript
+categories: 
+  - js
+  - method
+tags: javascript
 keywords:
-  - Javascript
+  - javascript
   - higher-order function
+thumbnailImage: https://raw.githubusercontent.com/Jae-kwang/blog/master/source/img/javascript.png
 date: 2017-02-15 09:46:22
 ---
 

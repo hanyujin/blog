@@ -1,12 +1,16 @@
 ---
 title: Underscore의 _.reduce 
-categories: Javascript
-tags: 
-  - Javascript
+categories: 
+  - js
+  - lib
+  - underscore
+tags:
+  - javascript
   - underscore.js
 keywords:
-  - Javascript
+  - javascript
   - library
+thumbnailImage: https://raw.githubusercontent.com/Jae-kwang/blog/master/source/img/underscore.png
 date: 2017-05-10 09:52:00
 ---
 

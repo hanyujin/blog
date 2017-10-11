@@ -1,9 +1,12 @@
 ---
 title: 반복문에서 break, continue 사용하기
-categories: Javascript
-tags: Javascript
+categories: 
+  - js
+  - method
+tags: javascript
 keywords:
-  - Javascript
+  - javascript
+thumbnailImage: https://raw.githubusercontent.com/Jae-kwang/blog/master/source/img/javascript.png
 date: 2017-01-08 14:35:33
 ---
 

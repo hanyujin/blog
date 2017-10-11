@@ -1,12 +1,15 @@
 ---
 title: Redux 코드로 이해하기
-categories: React
+categories: 
+  - js
+  - lib
+  - react
 tags: 
-  - React
-  - Redux
+  - react
+  - redux
 keywords:
-  - React
-thumbnailImage: redux.png  
+  - react
+thumbnailImage: https://raw.githubusercontent.com/Jae-kwang/blog/master/source/img/redux.png
 date: 2017-06-21 08:17:00
 ---
 

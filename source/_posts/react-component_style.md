@@ -1,10 +1,13 @@
 ---
 title: React에서 컴포넌트 스타일링 하기
-categories: React
+categories: 
+  - js
+  - lib
+  - react
 tags: 
-  - React
+  - react
 keywords:
-  - React
+  - react
 thumbnailImage: https://raw.githubusercontent.com/Jae-kwang/blog/master/source/img/react.png
 date: 2017-06-06 13:30:00
 ---

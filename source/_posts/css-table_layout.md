@@ -1,7 +1,7 @@
 ---
 title: 테이블 패턴을 활용한 레이아웃
-categories: CSS
-tags: CSS
+categories: css
+tags: css
 keywords:
   - css
 date: 2016-12-08 08:57:02

@@ -1,11 +1,14 @@
 ---
 title: Under-the-hood-ReactJS(2) - 업데이트
-categories: React
+categories: 
+  - js
+  - lib
+  - react
 tags:
-  - React
+  - react
   - javascript
 keywords:
-  - React
+  - react
 thumbnailImage: https://raw.githubusercontent.com/Jae-kwang/blog/master/source/img/react.png
 date: 2017-09-28 09:18:00
 ---

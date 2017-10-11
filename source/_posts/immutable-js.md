@@ -1,11 +1,14 @@
 ---
 title: immutable.js 알아보기
-categories: javascript
+categories: 
+  - js
+  - lib
+  - immutable
 tags:
-  - Javascript
+  - javascript
   - immutable.js
 keywords:
-  - Javascript
+  - javascript
   - library
 date: 2017-06-11 15:30:30
 ---

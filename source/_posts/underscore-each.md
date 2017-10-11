@@ -1,14 +1,16 @@
 ---
 title: Underscore의 _.each 
 categories: 
-  - javascript
-  - library
+  - js
+  - lib
+  - underscore
 tags:
-  - Javascript
+  - javascript
   - underscore.js
 keywords:
-  - Javascript
+  - javascript
   - library
+thumbnailImage: https://raw.githubusercontent.com/Jae-kwang/blog/master/source/img/underscore.png
 date: 2017-04-24 09:18:00
 ---
 

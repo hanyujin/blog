@@ -1,7 +1,7 @@
 ---
 title: CSS 말줄임표 사용시 기억할 점
-categories: CSS
-tags: CSS
+categories: css
+tags: css
 keywords:
   - css
 date: 2016-11-15 18:49:54
