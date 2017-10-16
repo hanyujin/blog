@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Jei&#39;s blog">
-    <title>React에서 컴포넌트 스타일링 하기 - Jei&#39;s blog</title>
+    <title>form 전송과 ajax 전송 - Jei&#39;s blog</title>
     <meta name="author" content="Jei">
     
-        <meta name="keywords" content="react">
+        <meta name="keywords" content="js,form,ajax">
     
     
         <link rel="icon" href="https://jae-kwang.github.io/blog/assets/images/fox_icon.png">
@@ -17,17 +17,17 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/blog/atom.xml">
     
-    <meta name="description" content="컴포넌트 스타일 적용하기리엑트는 컴포넌트들을 작성할때 어떤식으로 스타일을 입힐 수 있을까요?">
-<meta name="keywords" content="react">
+    <meta name="description" content="form 전송과 ajax 전송의 차이요즘 흔히 서버와의 통신시 ajax를 사용하고 있습니다.하지만 &amp;lt;form&amp;gt;을 통해서도 서버와의 통신이 가능한데 어떤 차이점이 있을까요?">
+<meta name="keywords" content="js,form,ajax">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="React에서 컴포넌트 스타일링 하기">
-<meta property="og:url" content="https://jae-kwang.github.io/blog/2017/06/06/react-component_style/index.html">
+<meta property="og:title" content="form 전송과 ajax 전송">
+<meta property="og:url" content="https://jae-kwang.github.io/blog/2017/10/16/form-vs-ajax/index.html">
 <meta property="og:site_name" content="Jei&#39;s blog">
-<meta property="og:description" content="컴포넌트 스타일 적용하기리엑트는 컴포넌트들을 작성할때 어떤식으로 스타일을 입힐 수 있을까요?">
-<meta property="og:updated_time" content="2017-10-11T00:30:37.000Z">
+<meta property="og:description" content="form 전송과 ajax 전송의 차이요즘 흔히 서버와의 통신시 ajax를 사용하고 있습니다.하지만 &amp;lt;form&amp;gt;을 통해서도 서버와의 통신이 가능한데 어떤 차이점이 있을까요?">
+<meta property="og:updated_time" content="2017-10-16T00:48:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React에서 컴포넌트 스타일링 하기">
-<meta name="twitter:description" content="컴포넌트 스타일 적용하기리엑트는 컴포넌트들을 작성할때 어떤식으로 스타일을 입힐 수 있을까요?">
+<meta name="twitter:title" content="form 전송과 ajax 전송">
+<meta name="twitter:description" content="form 전송과 ajax 전송의 차이요즘 흔히 서버와의 통신시 ajax를 사용하고 있습니다.하지만 &amp;lt;form&amp;gt;을 통해서도 서버와의 통신이 가능한데 어떤 차이점이 있을까요?">
 <meta property="fb:app_id" content="fullest.sway">
     
         <meta rel="publisher" content="https://plus.google.com/fullest.sway@gmail.com"/>
@@ -40,9 +40,6 @@
     
         <meta property="og:image" content="https://2.gravatar.com/avatar/1fbe0bcf78bc2ec031f823c2342eec8c"/>
     
-    
-        <meta property="og:image" content="https://raw.githubusercontent.com/Jae-kwang/blog/master/source/img/react.png"/>
-        <meta class="swiftype" name="image" data-type="enum" content="https://raw.githubusercontent.com/Jae-kwang/blog/master/source/img/react.png" />
     
     
     
@@ -247,19 +244,19 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            React에서 컴포넌트 스타일링 하기
+            form 전송과 ajax 전송
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2017-06-06T13:30:00+09:00">
+    <time itemprop="datePublished" datetime="2017-10-16T09:39:10+09:00">
 	
-		    6월 06, 2017
+		    10월 16, 2017
     	
     </time>
     
         <span>in </span>
         
-    <a class="category-link" href="/blog/categories/js/">js</a>, <a class="category-link" href="/blog/categories/js/lib/">lib</a>, <a class="category-link" href="/blog/categories/js/lib/react/">react</a>
+    <a class="category-link" href="/blog/categories/js/">js</a>
 
 
     
@@ -269,22 +266,29 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <h3 id="컴포넌트-스타일-적용하기"><a href="#컴포넌트-스타일-적용하기" class="headerlink" title="컴포넌트 스타일 적용하기"></a>컴포넌트 스타일 적용하기</h3><p>리엑트는 컴포넌트들을 작성할때 어떤식으로 스타일을 입힐 수 있을까요?</p>
+            <h3 id="form-전송과-ajax-전송의-차이"><a href="#form-전송과-ajax-전송의-차이" class="headerlink" title="form 전송과 ajax 전송의 차이"></a>form 전송과 ajax 전송의 차이</h3><p>요즘 흔히 서버와의 통신시 ajax를 사용하고 있습니다.<br>하지만 <code>&lt;form&gt;</code>을 통해서도 서버와의 통신이 가능한데 어떤 차이점이 있을까요?</p>
 <a id="more"></a>
-<h4 id="1-Basic-CSS"><a href="#1-Basic-CSS" class="headerlink" title="1. Basic CSS"></a>1. Basic CSS</h4><p>React도 다른 웹구현 방식과 동일하게 Head에서 link 태그를 통해 css를 불러와 적용할 수 있습니다.<br>물론 style 태그를 통해 직접 스타일을 작성하는 것도 가능하죠.</p>
-<p>편리하긴 하지만 이 방식은 Class name의 중복성을 피할수가 없습니다.</p>
-<p>게다가 이렇게 사용하면 컴포넌트 중심으로 구현되는 React와는 조금 동떨어진 느낌입니다.</p>
-<h4 id="2-CSS-Module"><a href="#2-CSS-Module" class="headerlink" title="2. CSS Module"></a>2. CSS Module</h4><p>글보다는 우선 예제를 보시죠</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> styles <span class="keyword">from</span> <span class="string">'./table.css'</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Table</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">    render () &#123;</div><div class="line">        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;styles.table&#125;</span>&gt;</span></span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;styles.row&#125;</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;styles.cell&#125;</span>&gt;</span>A0<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;styles.cell&#125;</span>&gt;</span>B0<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>위의 코드처럼 .css를 import로 불러와서 컴포넌트에서 .으로 접근하여 사용하는 방식입니다.<br>보다 컴포넌트별로 구분할 수 있고 접근하기도 좀 더 명확해 보입니다.</p>
-<p><a href="https://github.com/gajus/react-css-modules" target="_blank" rel="external">CSS Module</a>는 webpack을 이용하여 사용할 수 있습니다.</p>
-<p>저도 webpack을 잘하면 떡주무르듯 위의 링크에서 적용하라는 대로 해서 사용할 수 있겠는데,<br>아직 webpack을 잘 모르는 상태라서 생각보다 적용이 쉽지 않네요.</p>
-<p>그래서 create-react-app에서 eject를 해서 설정을 변경해서 적용해보았는데 저도 1번 방식이으로 하다가 컴포넌트 단위로 작업해보니 조금 새로웠습니다.</p>
-<p>여기에 더불어 여러 classname을 적용할때 es6 template literals을 사용하지 않고도 편리하게 적용할 수 있는 <a href="https://github.com/JedWatson/classnames" target="_blank" rel="external">classnames</a>을 사용하거나 sass나 less 같은 preprocessor를 적용하여 사용할 수 있습니다.</p>
-<h4 id="3-styled-components"><a href="#3-styled-components" class="headerlink" title="3. styled-components"></a>3. styled-components</h4><p><a href="https://www.styled-components.com/" target="_blank" rel="external">styled-components</a>는 컴포넌트 자체가 스타일을 입고 태어난다고 말할 수 있을것 같습니다.</p>
-<p>아래와 같이 사용됩니다.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> Button = styled.button<span class="string">`</span></div><div class="line">  border-radius: 3px;</div><div class="line">  padding: 0.25em 1em;</div><div class="line">  margin: 0 1em;</div><div class="line">  background: transparent;</div><div class="line">  color: palevioletred;</div><div class="line">  border: 2px solid palevioletred;</div><div class="line"></div><div class="line">  <span class="subst">$&#123;props =&gt; props.primary &amp;&amp; css<span class="string">`</span></span></div><div class="line">    background: palevioletred;</div><div class="line">    color: white;</div><div class="line">  `&#125;</div><div class="line">`</div></pre></td></tr></table></figure>
-<p>해당 스타일 방식은 컴포넌트 자체에 스타일을 입히기 때문에 props를 받아서 바로 스타일에 적용할 수도 있다는게 장점입니다.</p>
+<h2 id="비동기"><a href="#비동기" class="headerlink" title="비동기"></a>비동기</h2><p>form 방식과 ajax 방식의 대표적인 차이점이라고 하면 역시 ajax는 페이지의 전환 없이 <code>비동기</code>로 서버와 통신을 할 수 있게 되었다는 점입니다. 이러한 <code>비동기</code>를 통해 전체 페이지가 아닌 일부분만을 업데이트 할 수 있게 해줍니다.</p>
+<h2 id="이벤트"><a href="#이벤트" class="headerlink" title="이벤트"></a>이벤트</h2><p>사용자 인터렉션에 의헤 데이터를 서버로 전송하는경우 반드시 이벤트에 의해 발생되게 됩니다.</p>
+<p>이때, ajax를 사용해 통신을 할 경우 이벤트를 처리하는 이벤트 리스너를 별도로 생성해야합니다.</p>
+<p>하지만 form을 이용한다면 별도의 코드 없이 HTML에서 만으로 submit 이벤트를 발생시켜서 데이터를 서버에 전송할 수 있습니다.</p>
+<p>form에 form submit이 가능한 버튼이 있고, form에 포커스가 있는 상태라면 <code>enter</code>를 누르면 form submit이 됩니다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 폼 전송이 가능한 버튼 --&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- 범용 전송 버튼 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Submit Form"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- 커스텀 전송 버튼 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>Submit Form<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- 이미지 버튼-&gt;</span></div><div class="line">&lt;input type="image" src="graphic.gif"&gt;</div></pre></td></tr></table></figure>
+<p>form에는 이처럼 편의 기능이 있어서, 두가지 경우를 합쳐서 사용한는 경우가 많습니다. </p>
+<p>form을 이용해 submit 이벤트를 발생시키고, 이후에 form 전송이 막고 ajax를 통해 <code>비동기</code> 로 통신을 하는 방식이 많이 사용 되고 있습니다.</p>
+<h2 id="content-type"><a href="#content-type" class="headerlink" title="content-type"></a>content-type</h2><p>content-type은 request로 보내는 데이터가 무엇인지 알려줍니다.</p>
+<p>기본적으로 form과 ajax의 content-type은 <code>application/x-www-form-urlencoded</code>으로 key=value&amp;key=value 형태로 전송됩니다.</p>
+<p>form에서는 기본 전송인 <code>application/x-www-form-urlencoded</code>방식과 파일전송 방식인 <code>multipart/form-data</code>을 사용하고 있습니다.</p>
+<p>하지만 ajax는 기본을 제외하고 다른 라이브러리들은 이를 <code>application/json</code>과 같은 다른 방식으로 사용하는 경우가 많으니 인지하고 사용해야 합니다.</p>
+<p>변경된 이유는 예전과 다르게 <code>다계층</code>의 데이터를 주고 받아야 할 일이 많아졌기 때문입니다.</p>
+<blockquote>
+<p>참고 :</p>
+<ul>
+<li><a href="https://gist.github.com/jays1204/703297eb0da1facdc454" target="_blank" rel="external">https://gist.github.com/jays1204/703297eb0da1facdc454</a></li>
+<li><a href="http://fetobe.co.kr/http-protocol/" target="_blank" rel="external">http://fetobe.co.kr/http-protocol/</a></li>
+<li><a href="http://1ambda.github.io/content-type-vs-accept-http-header/" target="_blank" rel="external">http://1ambda.github.io/content-type-vs-accept-http-header/</a></li>
+</ul>
+</blockquote>
 
             
         </div>
@@ -294,7 +298,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">태그들</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/blog/tags/react/">react</a>
+    <a class="tag tag--primary tag--small t-link" href="/blog/tags/ajax/">ajax</a> <a class="tag tag--primary tag--small t-link" href="/blog/tags/form/">form</a> <a class="tag tag--primary tag--small t-link" href="/blog/tags/js/">js</a>
 
             </div>
         
@@ -303,7 +307,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/blog/2017/06/11/immutable-js/"  data-tooltip="immutable.js 알아보기">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">이전</span>
@@ -311,7 +315,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/blog/2017/05/23/underscore-reduceRight/" data-tooltip="Underscore의 _.reduceRight">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/blog/2017/10/11/bootstrap-tab/" data-tooltip="Bootstrap의 tap plugins 분석">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">다음</span>
                     <i class="fa fa-angle-right"></i>
@@ -326,17 +330,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://jae-kwang.github.io/blog/2017/06/06/react-component_style/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://jae-kwang.github.io/blog/2017/10/16/form-vs-ajax/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://jae-kwang.github.io/blog/2017/06/06/react-component_style/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://jae-kwang.github.io/blog/2017/10/16/form-vs-ajax/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://jae-kwang.github.io/blog/2017/06/06/react-component_style/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://jae-kwang.github.io/blog/2017/10/16/form-vs-ajax/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -384,7 +388,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/blog/2017/06/11/immutable-js/"  data-tooltip="immutable.js 알아보기">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">이전</span>
@@ -392,7 +396,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/blog/2017/05/23/underscore-reduceRight/" data-tooltip="Underscore의 _.reduceRight">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/blog/2017/10/11/bootstrap-tab/" data-tooltip="Bootstrap의 tap plugins 분석">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">다음</span>
                     <i class="fa fa-angle-right"></i>
@@ -407,17 +411,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://jae-kwang.github.io/blog/2017/06/06/react-component_style/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://jae-kwang.github.io/blog/2017/10/16/form-vs-ajax/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://jae-kwang.github.io/blog/2017/06/06/react-component_style/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://jae-kwang.github.io/blog/2017/10/16/form-vs-ajax/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://jae-kwang.github.io/blog/2017/06/06/react-component_style/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://jae-kwang.github.io/blog/2017/10/16/form-vs-ajax/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -443,17 +447,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://jae-kwang.github.io/blog/2017/06/06/react-component_style/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://jae-kwang.github.io/blog/2017/10/16/form-vs-ajax/">
                 <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://jae-kwang.github.io/blog/2017/06/06/react-component_style/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://jae-kwang.github.io/blog/2017/10/16/form-vs-ajax/">
                 <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://jae-kwang.github.io/blog/2017/06/06/react-component_style/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://jae-kwang.github.io/blog/2017/10/16/form-vs-ajax/">
                 <i class="fa fa-twitter"></i><span>Share on Twitter</span>
             </a>
         </li>
@@ -510,9 +514,9 @@
     
         <script>
              var disqus_config = function () {
-                 this.page.url = 'https://jae-kwang.github.io/blog/2017/06/06/react-component_style/';
+                 this.page.url = 'https://jae-kwang.github.io/blog/2017/10/16/form-vs-ajax/';
                  
-                    this.page.identifier = '2017/06/06/react-component_style/';
+                    this.page.identifier = '2017/10/16/form-vs-ajax/';
                                   
              };
             (function() {
