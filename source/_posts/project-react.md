@@ -13,10 +13,10 @@ keywords:
   - SSR
   - project
   - styled-components
-thumbnailImage: project-react_bg.jpg
+thumbnailImage: project-react_bg-cover.jpg
 thumbnailImagePosition: bottom
 metaAlignment: center
-coverImage : project-react_bg-cover.jpg
+coverImage : project-react_bg.jpg 
 date: 2018-02-04 15:37:32
 ---
 
