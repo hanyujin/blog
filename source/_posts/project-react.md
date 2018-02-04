@@ -16,7 +16,7 @@ keywords:
 thumbnailImage: project-react_bg.jpg
 thumbnailImagePosition: bottom
 metaAlignment: center
-coverImage : project-react_bg.jpg
+coverImage : project-react_bg-cover.jpg
 date: 2018-02-04 15:37:32
 ---
 
