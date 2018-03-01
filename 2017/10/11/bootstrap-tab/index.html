@@ -283,7 +283,7 @@
 <p>여기서 <code>+</code> 다음에 나오는 부분을 파서는 표현식으로 처리하며, 위와 같이 즉시 실행함수에서 사용됩니다.</p>
 <p>만약, <code>+</code>가 없는 상태라면 파서가 <code>function</code>을 함수 표현식이 아닌 선언식으로 인식하여 뒤에 나오는 <code>()</code>가 오류로 처리됩니다.</p>
 <blockquote>
-<p>참고 : <a href="https://stackoverflow.com/questions/13341698/javascript-plus-sign-in-front-of-function-name/13341710" target="_blank" rel="external">https://stackoverflow.com/questions/13341698/javascript-plus-sign-in-front-of-function-name/13341710</a></p>
+<p>참고 : <a href="https://stackoverflow.com/questions/13341698/javascript-plus-sign-in-front-of-function-name/13341710" target="_blank" rel="noopener">https://stackoverflow.com/questions/13341698/javascript-plus-sign-in-front-of-function-name/13341710</a></p>
 </blockquote>
 <h3 id="이벤트-바인딩"><a href="#이벤트-바인딩" class="headerlink" title="이벤트 바인딩"></a>이벤트 바인딩</h3><p>jQuery의 ‘on’을 API 통해 이벤트를 등록하고 있습니다.</p>
 <p>여기서 ‘이벤트 위임(Event Delegation)’ 방식으로 이벤트를 등록하고 있습니다. </p>
@@ -305,7 +305,7 @@
 <p>jQuery의 Plugin을 설정시 $.fn에 연결합니다. jQuery에서는 이부분에 연결된 기능을 prototype으로 연결시킵니다.</p>
 <p>다음으로는 Constructor에 연결합니다. 그 이유는 일부 동일한 다른 함수의 경우 (popover의 경우에는 tooptip을 상속받아서 사용)에는 다른 기능을 상속받아 사용하기 때문에 어떤 유형인지 확인이 어렵습니다. 그래서 Constructor를 사용해 어떤 유형인지 확인하는데 사용될 수 있습니다.</p>
 <blockquote>
-<p>참고 : <a href="https://stackoverflow.com/questions/19680895/bootstrap-constructor" target="_blank" rel="external">https://stackoverflow.com/questions/19680895/bootstrap-constructor</a></p>
+<p>참고 : <a href="https://stackoverflow.com/questions/19680895/bootstrap-constructor" target="_blank" rel="noopener">https://stackoverflow.com/questions/19680895/bootstrap-constructor</a></p>
 </blockquote>
 <p>$.fn.tab.noConflict를 사용해 이전에 $.fn.tab에 사용되고 있었던 플러그인을 사용할 수 있습니다. (예전에 동일한 이름으로 플러그인을 사용하고 있다는 가정하에)</p>
 <h3 id="탭-클래스-정의"><a href="#탭-클래스-정의" class="headerlink" title="탭 클래스 정의"></a>탭 클래스 정의</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Tab = <span class="function"><span class="keyword">function</span> (<span class="params">element</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.element = $(element)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Tab.VERSION = <span class="string">'3.3.2'</span></span><br><span class="line"></span><br><span class="line">Tab.TRANSITION_DURATION = <span class="number">150</span></span><br><span class="line"></span><br><span class="line">Tab.prototype.show = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;...&#125;</span><br><span class="line"></span><br><span class="line">Tab.prototype.activate = <span class="function"><span class="keyword">function</span> </span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
@@ -343,7 +343,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/blog/2017/09/28/Under-the-hood-ReactJS-2/" data-tooltip="Under-the-hood-ReactJS(2) - 업데이트">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/blog/2017/09/28/Under-the-hood-ReactJS-1/" data-tooltip="Under-the-hood-ReactJS(1) - 마운트">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">다음</span>
                     <i class="fa fa-angle-right"></i>
@@ -424,7 +424,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/blog/2017/09/28/Under-the-hood-ReactJS-2/" data-tooltip="Under-the-hood-ReactJS(2) - 업데이트">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/blog/2017/09/28/Under-the-hood-ReactJS-1/" data-tooltip="Under-the-hood-ReactJS(1) - 마운트">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">다음</span>
                     <i class="fa fa-angle-right"></i>

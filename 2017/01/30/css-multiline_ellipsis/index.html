@@ -270,7 +270,7 @@
             <h3 id="멀티라인에서의-말줄임은-단일줄과-다릅니다"><a href="#멀티라인에서의-말줄임은-단일줄과-다릅니다" class="headerlink" title="멀티라인에서의 말줄임은 단일줄과 다릅니다."></a>멀티라인에서의 말줄임은 단일줄과 다릅니다.</h3><p>기존 말줄임은 간단히 ‘text-overflow: ellipsis’ 속성을 사용하여 적용 할 수 있습니다.<br>말줄임 기능은 여러줄에 있을 경우 더욱 필요한 경우가 더 많습니다.<br>하지만 우리가 아는 ellipsis로는 구현할 수 없습니다.</p>
 <a id="more"></a>
 <p>웹킷엔진을 사용하는 브라우저에서는 -webkit-line-clamp 프로퍼티를 활용하여 여러줄의 문단도 CSS를 통해 말줄임 처리를 할 수 있습니다.</p>
-<p><a href="http://caniuse.com/#search=line-clamp" target="_blank" rel="external">지원하는 브라우저 확인하기</a></p>
+<p><a href="http://caniuse.com/#search=line-clamp" target="_blank" rel="noopener">지원하는 브라우저 확인하기</a></p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">display</span>: <span class="selector-tag">-webkit-box</span>; <span class="comment">/* 블록을 임의의 배치 순서로 변경할 수 있게 해줌 */</span></span><br><span class="line"><span class="selector-tag">-webkit-line-clamp</span>: 3; <span class="comment">/* 라인수 */</span></span><br><span class="line"><span class="selector-tag">-webkit-box-orient</span>: <span class="selector-tag">vertical</span>; <span class="comment">/* 박스의 흐름의 방향을 지정 */</span></span><br></pre></td></tr></table></figure>
 <h3 id="webkit-line-clamp-미지원-브라우저-지원"><a href="#webkit-line-clamp-미지원-브라우저-지원" class="headerlink" title="-webkit-line-clamp 미지원 브라우저 지원"></a>-webkit-line-clamp 미지원 브라우저 지원</h3><p>-webkit-line-clamp를 지원하지 않는 브라우저에서는 아래와 같이 사용할 수 있습니다.</p>
 <p>height = line-height * -webkit-line-clamp 으로 설정해주시면 됩니다.</p>
@@ -290,8 +290,8 @@
 <span class="highlight-text primary">line-clamp를 사용하는것 대신에 공통으로 쓸 수 있는 코드를 사용하는것도 좋은방법일거라 생각됩니다.</span></p>
 <p>참고자료 :</p>
 <ol>
-<li><a href="http://stackoverflow.com/questions/3123063/what-does-moz-document-url-prefix-do" target="_blank" rel="external">What does @-moz-document url-prefix() do?</a></li>
-<li><a href="http://revelry.co/multi-line-ellipsis-using-pure-css/" target="_blank" rel="external">Multi-line Ellipsis using pure CSS as a work around.</a></li>
+<li><a href="http://stackoverflow.com/questions/3123063/what-does-moz-document-url-prefix-do" target="_blank" rel="noopener">What does @-moz-document url-prefix() do?</a></li>
+<li><a href="http://revelry.co/multi-line-ellipsis-using-pure-css/" target="_blank" rel="noopener">Multi-line Ellipsis using pure CSS as a work around.</a></li>
 </ol>
 
             
